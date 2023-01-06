@@ -1,34 +1,55 @@
 {
-  "expo": {
-    "name": "Notify Me",
-    "slug": "notify-me",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#000"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/jojo.png",
-        "backgroundColor": "#000"
-      }
-    },
-    "web": {
-      "favicon": "./assets/images/favicon.png"
+    "expo": {
+        "name": "Notify Me",
+        "slug": "notify-me",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/images/notify.png",
+        "scheme": "myapp",
+        "userInterfaceStyle": "automatic",
+        "splash": {
+            "image": "./assets/images/splash1.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#000000"
+        },
+        "updates": {
+            "fallbackToCacheTimeout": 0,
+            "url": "https://u.expo.dev/57488b2b-1314-4f06-a27c-58561f166d9c"
+        },--
+        "assetBundlePatterns": ["**/*"],
+        "ios": {
+            "supportsTablet": true
+        },
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/images/notify.png",
+                "backgroundColor": "#000"
+            },
+            "package": "com.jaypee.notifyme",
+            "googleServicesFile": "./assets/google-services.json"
+        },
+        "web": {
+            "favicon": "./assets/images/favicon.png"
+        },
+        "extra": {
+            "eas": {
+                "projectId": "57488b2b-1314-4f06-a27c-58561f166d9c"
+            }
+        },
+        "runtimeVersion": {
+            "policy": "sdkVersion"
+        },
+        "plugins": [
+          [
+            "expo-notifications",
+            {
+              "icon": "./assets/notify.jpg",
+              "color": "#ffffff",
+              "sounds": [
+                "./assets/audio/notification.wav"
+              ]
+            }
+          ]
+        ]
     }
-  }
 }

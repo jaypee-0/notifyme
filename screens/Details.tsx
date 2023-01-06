@@ -9,69 +9,32 @@ import React from "react";
 
 const Details = ({ route }: any) => {
     const navigation = useNavigation();
-    const { name, pic } = route.params;
-    const [message, setmessage] = React.useState("");
+    const { name, time, detail, message } = route.params;
+    
+    const clockImg = require("../assets/icons/clock.png")
+    const cartImg = require("../assets/icons/cart.png")
+    const fireImg = require("../assets/icons/fire.png")
+    const downImg = require("../assets/icons/dbdown.png")
 
-    console.log(name, "Jaypee");
     return (
-    <SafeAreaView style={tw`h-[100%] bg-white text-black flex flex-col pt-[${Constants.statusBarHeight}]`}>
-            <View style={tw`flex flex-row justify-between items-center bg-white w-full px-6 py-3`}>
+        <SafeAreaView style={tw`h-[100%] bg-[#f000ff10]  text-black flex flex-col pt-[${Constants.statusBarHeight}]`}>
+            <View style={tw`flex flex-row justify-between items-center w-full px-6 pb-3`}>
                 <View style={tw`flex flex-row items-center`}>
                     <TouchableOpacity onPress={() => navigation.goBack()} style={tw`mr-3`}>
-                        <AntDesign name="arrowleft" size={24} color={"#2F80ED"} />
-                    </TouchableOpacity>
-                    <View style={tw`flex flex-row`}>
-                        <Image source={pic} style={tw`mr-2 rounded-full h-[30px] w-[30px]`} />
-                        <View style={tw`flex flex-col`}>
-                            <Text style={tw`text-[#2F80ED] font-bold`}>{name}</Text>
-                            <Text style={tw`text-[#00000040] text-[12px]`}>Online</Text>
-                        </View>
-                    </View>
-                </View>
-                <TouchableOpacity style={tw``}>
-                    <AntDesign name="ellipsis1" size={24} color={"#2F80ED"} />
-                </TouchableOpacity>
-            </View>
-            <View style={tw`flex-1 bg-[#F5F5F5] px-10 items-center flex flex-col`}>
-                <View style={tw`text-[#474F6E] my-auto mx-auto flex flex-col text-center items-center`}>
-                    <Image source={require("../../assets/personalchat.png")} style={tw`mb-4 ml-5`} />
-                    <Text style={tw`text-center text-[#2F80ED]`}>
-                        In order to continue to chat with <Text style={tw`font-bold`}>{name + " "}</Text>you will have to speak on video for at least 30 seconds
-                    </Text>
-                    <Text style={tw`text-center text-[#212867] font-bold my-2 text-lg`}>{"00: 00: 00"}</Text>
-                    <Text style={tw`text-center text-lg max-w-[60%] text-[#242424]`}>You have 24hours to initiate a video call</Text>
-                    <TouchableOpacity style={tw`bg-[#2F80ED] px-3 py-4 mt-2 rounded-lg flex flex-row items-center`}>
-                        <FontAwesome name="video-camera" color={"#fff"} style={tw`mr-1`} />
-                        <Text style={tw`text-white font-semibold`}>Video call</Text>
+                        <AntDesign name="arrowleft" size={24} color={"#00000080"} />
                     </TouchableOpacity>
                 </View>
             </View>
-            <View style={tw`mt-auto py-2 px-6 flex flex-row bg-white items-center`}>
-                <TouchableOpacity style={tw`mr-2`}>
-                    <AntDesign name="plus" size={24} color={"#2F80ED"} />
-                </TouchableOpacity>
-                <View style={tw`flex flex-row py-2 px-3 w-[65%] justify-between rounded-[10px] border border-[#EAEAEA] items-center bg-[#FAFAFA]`}>
-                    <TextInput
-                        style={tw`text-[#000] h-full`}
-                        onChangeText={(text: string): void => {
-                            setmessage(text);
-                        }}
-                        value={message}
-                        placeholderTextColor="#00000040"
-                        placeholder="Type your message"
-                    />
-                    <View style={tw``}>
-                        <Image source={require("../../assets/sticker.png")} />
-                    </View>
+
+            <View style={tw`flex flex-col px-6`}>
+                <Image source={message.includes("Version") ? fireImg : message.includes("cart") ? cartImg : message.includes("waitlist") ? clockImg : downImg} style={tw`mr-2 rounded-full h-[50px] w-[50px]`} />
+                <View style={tw`flex flex-col`}>
+                    <Text style={tw`text-[#00000070] mt-2 font-bold`}>{'User: ' + 'Notifyme Admin'}</Text>
+                    <Text style={tw`text-[#00000070] `}>{'Message: ' + message}</Text>
+                    <Text style={tw`text-[#00000070] mb-2`}>{'Time: ' + time}</Text>
+                    <Text style={tw`text-[#00000094] `}>{'Details:'}</Text>
                 </View>
-                <View style={tw`ml-auto flex flex-row items-center`}>
-                    <View style={tw`mr-3`}>
-                        <FontAwesome name="video-camera" size={20} color="#2F80ED" />
-                    </View>
-                    <View style={tw``}>
-                        <FontAwesome name="microphone" size={20} color="#2F80ED" />
-                    </View>
-                </View>
+                    <Text style={tw`text-[#00000070]`}>{message}</Text>
             </View>
         </SafeAreaView>
     );
